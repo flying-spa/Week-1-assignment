@@ -17,6 +17,48 @@
   - `npm run test-calculator`
 */
 
-class Calculator {}
+class Calculator {
+  constructor(expression) {
+    this.expression = expression;
+  }
+  trimWhiteSpaces() {
+    this.expression= this.expression.replace(/\s+/g, '');
+  }
+  checkNonNumericCharacters() {
+    var expressionLength = this.expression.length;
+    for(var i=0; i<expressionLength; i++) {
+      switch(this.expression[i]) {
+        case '0':
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+        case '7':
+        case '8':
+        case '9':
+        case '*':
+        case '/':
+        case '+':
+        case '-':
+        case '(':
+        case ')':  
+            break;
+        default:
+            return false;
+      }
+    }
+    return true;
+  }
+  evaluateExpression() {
+    this.trimWhiteSpaces();
+    if(this.checkNonNumericCharacters()) {
+      return eval(this.expression);
+    }
+  }
+}
 
+// let calulator = new Calculator("10 +   2 *    (   6 - (4 + 1) / 2) + 7");
+// console.log(calulator.evaluateExpression());
 module.exports = Calculator;

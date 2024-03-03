@@ -8,6 +8,22 @@
 */
 
 function isAnagram(str1, str2) {
+  //approach 1 -> sort both the strings and compare the, TC: O(nlogn)
+  //aproach 2 -> put the contents of the first string into a map and then remove it with second string, TC: O(n)
+
+  str1 = str1.toLowerCase();
+  str2 = str2.toLowerCase();
+  if(str1.length != str2.length)
+  return false;
+
+  //approach 1
+  sortedStr1 = str1.split('').sort().join('');
+  sortedStr2 = str2.split('').sort().join('');
+  if(sortedStr1 == sortedStr2)
+  return true;
+
+  else 
+  return false;
 
 }
 
